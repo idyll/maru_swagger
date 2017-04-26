@@ -30,7 +30,7 @@ defmodule MaruSwagger.ConfigStruct do
     fn ->
       [ "" |
         if Code.ensure_loaded?(Phoenix) do
-          phoenix_module = Module.concat(Mix.Phoenix.base(), "Router")
+          phoenix_module = Module.concat( Module.concat(Mix.Phoenix.base(), "Web"), "Router")
           phoenix_module.__routes__ |> Enum.filter(fn r ->
             match?(%{kind: :forward, plug: ^module}, r)
           end)
